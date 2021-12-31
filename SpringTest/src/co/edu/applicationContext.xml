@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+               http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config />
+	<context:component-scan
+		base-package="co.edu.resource" />
+	<bean id="customerbean" class="co.edu.Customer">
+		<property name="customerId" value="1234567"></property>
+		<property name="customerName" value="Java Spring"></property>
+		<property name="customerContact" value="99999999999"></property>
+		<property name="customerAddress.country" value="India"></property>
+		<property name="customerAddress.state" value="Telangana"></property>
+	</bean>
+	<bean id="que" class="co.edu.Question">
+		<constructor-arg value="111"></constructor-arg>
+		<constructor-arg value="What is java?"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<value>Java is a programming language</value>
+				<value>Java is a Platform</value>
+				<value>Java is an Island of Indonasia</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="ans1" class="co.edu.Answer">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg
+			value="Java is a programming language"></constructor-arg>
+		<constructor-arg value="John"></constructor-arg>
+	</bean>
+
+	<bean id="ans2" class="co.edu.Answer">
+		<constructor-arg value="2"></constructor-arg>
+		<constructor-arg value="Java is a Platform"></constructor-arg>
+		<constructor-arg value="Ravi"></constructor-arg>
+	</bean>
+
+	<bean id="que2" class="co.edu.Question2">
+		<constructor-arg value="111"></constructor-arg>
+		<constructor-arg value="What is java?"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<ref bean="ans1" />
+				<ref bean="ans2" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="q3" class="co.edu.Question">
+		<constructor-arg value="11"></constructor-arg>
+		<constructor-arg value="What is Java?"></constructor-arg>
+		<constructor-arg>
+			<map>
+				<entry key="Java is a Programming Language" value="Ajay Kumar"></entry>
+				<entry key="Java is a Platform" value="John Smith"></entry>
+				<entry key="Java is an Island" value="Raj Kumar"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+	<bean id="mycompany" class="co.edu.resource.Company">
+		<property name="name" value="Test Pvt. Ltd." />
+		<property name="location" value="India" />
+	</bean>
+
+	<bean id="myemployee" class="co.edu.resource.Employee">
+		<property name="id" value="123456" />
+		<property name="name" value="Charlotte O' Neil" />
+	</bean>
+	<bean id="helloWorld" class="co.edu.lifecycle.HelloWorld"
+		init-method="init" destroy-method="destroy">
+		<property name="message" value="Hello World!" />
+	</bean>
+
+	<bean autowire="byName"
+		class="com.dineshonjava.sdnext.contextAware.tutorial.Triangle"
+		id="triangle"></bean>
+
+	<bean class="com.dineshonjava.sdnext.contextAware.tutorial.Point"
+		id="pointA">
+		<property name="x" value="0"></property>
+		<property name="y" value="0"></property>
+	</bean>
+
+	<bean class="com.dineshonjava.sdnext.contextAware.tutorial.Point"
+		id="pointB">
+		<property name="x" value="-20"></property>
+		<property name="y" value="0"></property>
+	</bean>
+
+	<bean class="com.dineshonjava.sdnext.contextAware.tutorial.Point"
+		id="pointC">
+		<property name="x" value="20"></property>
+		<property name="y" value="0"></property>
+	</bean>
+</beans>  
